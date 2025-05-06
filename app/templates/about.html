@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre nosotros</title>
+  <link rel="stylesheet" href="../static/style.css">
+  <style>
+
+  .cita-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Parte superior */
+  .intro {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  .intro-text {
+    flex: 1;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .intro-image img {
+    max-width: 400px;
+    height: auto;
+  }
+
+  /* Información ubicación */
+  .ubicacion {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    position: relative;
+  }
+
+  .banner {
+    background-color: #4A90E2;
+    color: white;
+    padding: 0.5rem;
+    clip-path: polygon(5% 100%, 100% 100%, 100% 0, 0 0);
+    margin: 2rem 0 1rem 0;
+  }
+
+  .foto-local {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 1rem 0;
+  }
+
+  /* Formulario */
+  .formulario {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  form input,
+  form textarea {
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  form button {
+    background-color: #4A90E2;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .form-info {
+    flex: 1;
+    border: 1px solid black;
+    padding: 1rem;
+    min-width: 250px;
+    max-width: 350px;
+  }
+  </style>
+</head>
+<body>
+  {% include 'header.html' %}
+  <section class="cita-container">
+
+    <!-- Información de ubicación y horario -->
+    <div class="ubicacion">
+      <h3 class="banner">Conoce Nuestra Instalacion</h3>
+      <img src="{{ url_for('static', filename='img/model-with-glasses.png') }}" alt="Modelo con gafas">
+      <p><strong>En Soledad Cra 30 No.23a-87<br>Hipodromo Diagonal al Ara</strong></p>
+
+      <h3 class="banner">Horario</h3>
+      <p><strong>De Lunes a Viernes</strong><br>9:00-12:00Am - 2:00–6:30Pm</p>
+      <p><strong>Sábados</strong><br>9:00–1:00Am - 2:00–4:30Pm</p>
+    </div>
+
+    <!-- Formulario de cita -->
+    <div class="formulario">
+      <form>
+        <input type="text" placeholder="Nombres">
+        <input type="text" placeholder="Apellidos">
+        <input type="email" placeholder="Correo">
+        <input type="tel" placeholder="Teléfono">
+        <input type="text" placeholder="Hora">
+        <textarea placeholder="Mensaje (Opcional)"></textarea>
+        <button type="submit">Agendar Cita</button>
+      </form>
+
+      <div class="form-info">
+        <h4>Agenda con Nosotros</h4>
+        <p>
+          Llena el formulario y un asesor se estará comunicando contigo en el menor tiempo posible para confirmar la cita.
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

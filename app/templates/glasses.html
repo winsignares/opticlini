@@ -1,0 +1,96 @@
+<style>
+  .productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.producto {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 180px;
+  margin-bottom: 0.5rem;
+}
+
+.codigo {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.nombre {
+  font-weight: bold;
+  margin: 0.2rem 0;
+}
+
+.precio {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  background: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #000;
+  color: #fff;
+}
+</style>
+
+<section class="productos">
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+  <div class="producto">
+    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
+    <p class="codigo">MT501</p>
+    <p class="nombre">Montura Hombre Miratto</p>
+    <p class="precio">180.000$</p>
+    <button class="btn">Añadir al carrito</button>
+  </div>
+</section>

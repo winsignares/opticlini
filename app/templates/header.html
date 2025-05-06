@@ -1,0 +1,78 @@
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .nav-left a,
+  .nav-right a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(53%) sepia(60%) saturate(484%) hue-rotate(189deg) brightness(97%) contrast(87%);
+  }
+
+  .cta-button {
+    background-color: #42a5f5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+  }
+
+  .divider {
+    height: 30px;
+    width: 1px;
+    background-color: #ddd;
+  }
+</style>
+<header>
+  <div class="nav-left">
+    <a href="/about">Sobre Nosotros</a>
+    <div class="divider"></div>
+    <a href="/">Inicio</a>
+  </div>
+
+  <div class="logo">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+  </div>
+
+  <div class="nav-right">
+    <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="Buscar" class="icon">
+    <div class="divider"></div>
+    <a href="/cart">
+      <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Carrito" class="icon">
+    </a>
+    <div class="divider"></div>
+    <a href="/about" class="cta-button">Pedir Cita ▶</a>
+  </div>
+</header>

@@ -1,0 +1,116 @@
+<style>
+  .filtro {
+    padding: 20px;
+  }
+
+  .filtro h4 {
+    color: gray;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+
+  .filtro-section {
+    margin-bottom: 30px;
+  }
+
+  .filtro-section h3 {
+    margin: 10px 0;
+  }
+
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  .slider {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .checkbox-group {
+    margin-top: 10px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+
+  .checkbox-item input {
+    margin-right: 8px;
+  }
+
+  .search-box {
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+  }
+
+  .search-box input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+  }
+
+  .divider {
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+  }
+</style>
+
+<div class="filtro">
+  <h4>Filtro</h4>
+
+  <!-- Precio -->
+  <div class="filtro-section">
+    <h3>Precio</h3>
+    <div class="input-group">
+      <input type="text" placeholder="40.000">
+      <input type="text" placeholder="400.000">
+    </div>
+    <input type="range" class="slider" min="0" max="500000" value="40000">
+    <input type="range" class="slider" min="0" max="500000" value="400000">
+  </div>
+
+  <!-- Marca -->
+  <div class="filtro-section">
+    <h3>Marca</h3>
+    <div class="search-box">
+      🔍 <input type="text" placeholder="Buscar">
+    </div>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox"> Miratto</label>
+      <label class="checkbox-item"><input type="checkbox"> Miratto Petitte</label>
+      <label class="checkbox-item"><input type="checkbox"> Tonelly</label>
+      <label class="checkbox-item"><input type="checkbox"> Code Line</label>
+      <label class="checkbox-item"><input type="checkbox" checked> OH</label>
+    </div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- Categorías -->
+  <div class="filtro-section">
+    <h3>Categorías</h3>
+    <div class="search-box">
+      🔍 <input type="text" placeholder="Buscar">
+    </div>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox"> Hombre</label>
+      <label class="checkbox-item"><input type="checkbox" checked> Mujer</label>
+    </div>
+  </div>
+</div>

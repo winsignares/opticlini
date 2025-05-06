@@ -1,0 +1,82 @@
+<style>
+  .pago-container {
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+.pago-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.opcion-pago {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.opcion-pago label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.opcion-pago input[type="radio"] {
+  width: 24px;
+  height: 24px;
+}
+
+.iconos {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconos img {
+  height: 24px;
+}
+
+.totales {
+  margin-top: 3rem;
+  text-align: right;
+}
+
+.totales p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+</style>
+
+<div class="pago-container">
+  <h2>Selecciona el método de pago</h2>
+
+  <div class="opcion-pago">
+    <label>
+      <input type="radio" name="metodo_pago" value="banco">
+      <span class="etiqueta-radio">Banco</span>
+    </label>
+    <div class="iconos">
+      <img src="ruta/visa.png" alt="Visa">
+      <img src="ruta/mastercard.png" alt="MasterCard">
+      <img src="ruta/nagad.png" alt="Nagad">
+    </div>
+  </div>
+
+  <div class="opcion-pago">
+    <label>
+      <input type="radio" name="metodo_pago" value="entrega">
+      <span class="etiqueta-radio"><u>Pago contra entrega</u></span>
+    </label>
+  </div>
+
+  <div class="totales">
+    <p><strong>Subtotal:</strong> <span>0$</span></p>
+    <p><strong>Costo de envío:</strong> <span>0$</span></p>
+    <p><strong>Total:</strong> <span>0$</span></p>
+  </div>
+</div>
