@@ -1,7 +1,30 @@
 from flask import Flask, render_template
+from app.controllers import (
+    users,
+    products,
+    services,
+    schedules,
+    carts,
+    cart_detail,
+    orders,
+    order_details,
+    payment_methods,
+    contact_info
+)
 
 def create_app():
     app = Flask(__name__)
+
+    app.register_blueprint(users.bp)
+    app.register_blueprint(products.bp)
+    app.register_blueprint(services.bp)
+    app.register_blueprint(schedules.bp)
+    app.register_blueprint(carts.bp)
+    app.register_blueprint(cart_detail.bp)
+    app.register_blueprint(orders.bp)
+    app.register_blueprint(order_details.bp)
+    app.register_blueprint(payment_methods.bp)
+    app.register_blueprint(contact_info.bp)
 
     @app.route('/')
     def index():
