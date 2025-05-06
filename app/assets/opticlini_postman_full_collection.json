@@ -1,0 +1,1018 @@
+{
+  "info": {
+    "name": "Opticlini API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST usuarios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Juan P\\u00e9rez\",\n  \"email\": \"juan@example.com\",\n  \"contrase\\u00f1a\": \"123456\",\n  \"telefono\": \"3001234567\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/usuarios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "usuarios"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST productos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Gafas Rayban\",\n  \"descripcion\": \"Gafas de sol polarizadas\",\n  \"stock\": 50,\n  \"precio\": 280000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "productos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST servicios",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Examen Visual\",\n  \"descripcion\": \"Examen visual completo\",\n  \"precio\": 70000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/servicios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "servicios"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST citas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2025-05-15\",\n  \"hora\": \"10:30:00\",\n  \"id_usuario\": 1,\n  \"id_servicio\": 1,\n  \"estado\": \"pendiente\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/citas",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "citas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST carritos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_usuario\": 1,\n  \"total\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/carritos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "carritos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST detalles-carrito",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_carrito\": 1,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/detalles-carrito",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-carrito"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST pedidos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2025-05-15\",\n  \"id_usuario\": 1,\n  \"id_metodo_pago\": 1,\n  \"total\": 560000.0,\n  \"estado\": \"pagado\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/pedidos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "pedidos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST detalles-pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_pedido\": 1,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/detalles-pedido",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-pedido"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST metodos-pago",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tipo\": \"Tarjeta de cr\\u00e9dito\",\n  \"detalles\": \"Visa\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/metodos-pago",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "metodos-pago"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST contactos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_usuario\": 1,\n  \"direccion\": \"Cra 30 No.23a-87\",\n  \"telefono\": \"3107894561\",\n  \"email\": \"contacto@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/contactos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "contactos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET usuarios",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/usuarios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "usuarios"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET usuarios/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/usuarios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "usuarios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT usuarios/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Juan P\\u00e9rez\",\n  \"email\": \"juan@example.com\",\n  \"contrase\\u00f1a\": \"123456\",\n  \"telefono\": \"3001234567\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/usuarios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "usuarios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE usuarios/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/usuarios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "usuarios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/productos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "productos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET productos/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/productos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "productos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT productos/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Gafas Rayban\",\n  \"descripcion\": \"Gafas de sol polarizadas\",\n  \"stock\": 50,\n  \"precio\": 280000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/productos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "productos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE productos/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/productos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "productos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET servicios",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/servicios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "servicios"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET servicios/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/servicios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "servicios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT servicios/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Examen Visual\",\n  \"descripcion\": \"Examen visual completo\",\n  \"precio\": 70000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/servicios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "servicios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE servicios/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/servicios/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "servicios",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET citas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/citas",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "citas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET citas/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/citas/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "citas",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT citas/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2025-05-15\",\n  \"hora\": \"10:30:00\",\n  \"id_usuario\": 1,\n  \"id_servicio\": 1,\n  \"estado\": \"pendiente\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/citas/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "citas",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE citas/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/citas/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "citas",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET carritos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/carritos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "carritos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET carritos/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/carritos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "carritos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT carritos/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_usuario\": 1,\n  \"total\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/carritos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "carritos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE carritos/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/carritos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "carritos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET detalles-carrito",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-carrito",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-carrito"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET detalles-carrito/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-carrito/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-carrito",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT detalles-carrito/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_carrito\": 1,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/detalles-carrito/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-carrito",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE detalles-carrito/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-carrito/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-carrito",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET pedidos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/pedidos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "pedidos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET pedidos/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/pedidos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "pedidos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT pedidos/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2025-05-15\",\n  \"id_usuario\": 1,\n  \"id_metodo_pago\": 1,\n  \"total\": 560000.0,\n  \"estado\": \"pagado\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/pedidos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "pedidos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE pedidos/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/pedidos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "pedidos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET detalles-pedido",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-pedido",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-pedido"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET detalles-pedido/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-pedido/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-pedido",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT detalles-pedido/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_pedido\": 1,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 560000.0\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/detalles-pedido/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-pedido",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE detalles-pedido/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/detalles-pedido/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "detalles-pedido",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET metodos-pago",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/metodos-pago",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "metodos-pago"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET metodos-pago/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/metodos-pago/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "metodos-pago",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT metodos-pago/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"tipo\": \"Tarjeta de cr\\u00e9dito\",\n  \"detalles\": \"Visa\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/metodos-pago/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "metodos-pago",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE metodos-pago/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/metodos-pago/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "metodos-pago",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET contactos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/contactos",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "contactos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET contactos/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/contactos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "contactos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PUT contactos/:id",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_usuario\": 1,\n  \"direccion\": \"Cra 30 No.23a-87\",\n  \"telefono\": \"3107894561\",\n  \"email\": \"contacto@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/contactos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "contactos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DELETE contactos/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/contactos/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "contactos",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}
