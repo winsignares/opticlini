@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.db import get_connection
 
-bp = Blueprint('detalle_carrito', __name__, url_prefix='/detalles-carrito')
+bp = Blueprint('detalle_carrito', __name__, url_prefix='/api/detalles-carrito')
 
 @bp.route('/', methods=['GET'])
 def listar():

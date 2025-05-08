@@ -1,6 +1,6 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS opticlini CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE opticlini;
+CREATE DATABASE IF NOT EXISTS opticlinic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE opticlinic;
 
 -- Tabla Usuario
 CREATE TABLE Usuario (
