@@ -24,12 +24,15 @@ services:
       DB_NAME: opticlinic
       DB_USER: user
       DB_PASSWORD: userpass
+      FLASK_ENV: development
+      FLASK_APP: app.py
     ports:
       - "4200:4200"
     depends_on:
       - mysql
     volumes:
-      - .:/run
+      - .:/app
+    working_dir: /app
 
 volumes:
   mysql_data:
