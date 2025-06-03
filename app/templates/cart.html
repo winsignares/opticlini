@@ -42,6 +42,7 @@
       background: white;
       font-family: sans-serif;
       height: 70%;
+      min-height: fit-content;
     }
 
     .form-container input {
@@ -81,23 +82,171 @@
     <div class="header-bar">Tu Carrito</div>
   </div>
   <div class="container__principal">
-    <div class="empty-cart">
+    <div class="empty-cart" id="cart-content">
       <p><strong>Tu Carrito esta vacio ;(</strong></p>
       <p>Agrega Productos</p>
     </div>
+
     <div class="form-container">
-      <input type="text" placeholder="Correo">
-      <input type="text" placeholder="Cedula">
-      <input type="text" placeholder="Telefono">
-      <div class="totals">
-        <div><span>Subtotal:</span><span>0$</span></div>
-        <div><span>Costo de envío:</span><span>0$</span></div>
-        <div><strong>Total:</strong><strong>0$</strong></div>
+      <form id="form-pedido">
+        <label for="metodoPago">Método de Pago:</label>
+        <select id="metodoPago" required>
+          <option value="">Selecciona uno</option>
+        </select>
+
+        <div class="totals">
+          <div><span>Subtotal:</span><span id="subtotal">0$</span></div>
+          <div><strong>Total:</strong><strong id="total">0$</strong></div>
+        </div>
+
+        <button type="submit" class="btn" style="margin-top: 1rem;">Finalizar Pedido</button>
+      </form>
+      <hr style="margin: 2rem 0;">
+      <div id="lista-pedidos">
+        <h3>Pedidos recientes</h3>
+        <div id="pedidos-container"></div>
       </div>
     </div>
   </div>
 </div>
 <script src="{{url_for('static', filename='js/api-client.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="module">
+  import {
+    obtenerDetallesCarrito,
+    obtenerProductos,
+    obtenerMetodosPago,
+    crearPedido,
+    obtenerPedidos
+  } from '../static/js/api-client.js';
+
+  async function cargarPedidos() {
+  const contenedor = document.getElementById("pedidos-container");
+  contenedor.innerHTML = "";
+
+  try {
+    const pedidos = await obtenerPedidos();
+    if (pedidos.length === 0) {
+      contenedor.innerHTML = "<p>No hay pedidos aún.</p>";
+      return;
+    }
+
+    pedidos.forEach(pedido => {
+      const div = document.createElement("div");
+      div.style.border = "1px solid #ccc";
+      div.style.borderRadius = "6px";
+      div.style.padding = "1rem";
+      div.style.marginBottom = "1rem";
+      div.style.background = "#f9f9f9";
+
+      div.innerHTML = `
+        <p><strong>Pedido #${pedido.id_pedido}</strong></p>
+        <p><strong>Fecha:</strong> ${pedido.fecha}</p>
+        <p><strong>Total:</strong> ${formatearCOP(pedido.total)}</p>
+        <p><strong>Estado:</strong> ${pedido.estado}</p>
+      `;
+
+      contenedor.appendChild(div);
+    });
+  } catch (e) {
+    contenedor.innerHTML = "<p>Error al cargar los pedidos.</p>";
+    console.error(e);
+  }
+}
+
+  const idCarrito = 7;
+  const idUsuario = 2;
+  const estado = "pendiente";
+
+  function formatearCOP(valor) {
+    return Number(valor).toLocaleString("es-CO", {
+      style: "currency",
+      currency: "COP",
+      minimumFractionDigits: 0,
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const contenedor = document.getElementById("cart-content");
+    const subtotalDOM = document.getElementById("subtotal");
+    const totalDOM = document.getElementById("total");
+    const metodoPagoSelect = document.getElementById("metodoPago");
+
+    let total = 0;
+
+    try {
+      const [detalles, productos, metodos] = await Promise.all([
+        obtenerDetallesCarrito(),
+        obtenerProductos(),
+        obtenerMetodosPago()
+      ]);
+
+      // Rellenar métodos de pago
+      metodos.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m.id_metodo_pago;
+        opt.textContent = m.tipo;
+        metodoPagoSelect.appendChild(opt);
+      });
+
+      const productosCarrito = detalles.filter(p => p.id_carrito === idCarrito);
+      if (productosCarrito.length === 0) return;
+
+      contenedor.innerHTML = "";
+      productosCarrito.forEach(item => {
+        total += parseFloat(item.subtotal);
+        const producto = productos.find(p => p.id_producto === item.id_producto);
+        const nombreProducto = producto ? producto.nombre : `Producto ${item.id_producto}`;
+
+        const productoDiv = document.createElement("div");
+        productoDiv.style.marginBottom = "1rem";
+        productoDiv.innerHTML = `
+          <p><strong>Producto:</strong> ${nombreProducto}</p>
+          <p><strong>Cantidad:</strong> ${item.cantidad}</p>
+          <p><strong>Subtotal:</strong> ${formatearCOP(item.subtotal)}</p>
+          <hr>
+        `;
+        contenedor.appendChild(productoDiv);
+      });
+
+      subtotalDOM.textContent = formatearCOP(total);
+      totalDOM.textContent = formatearCOP(total);
+    } catch (e) {
+      contenedor.innerHTML = "<p>Error al cargar el carrito.</p>";
+      console.error(e);
+    }
+
+    // Enviar pedido
+    const form = document.getElementById("form-pedido");
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const idMetodo = parseInt(metodoPagoSelect.value);
+
+      if (!idMetodo) {
+        alert("Selecciona un método de pago");
+        return;
+      }
+
+      const pedido = {
+        fecha: new Date().toISOString().slice(0, 10),
+        id_usuario: idUsuario,
+        id_metodo_pago: idMetodo,
+        total: total,
+        estado: estado
+      };
+
+      try {
+        await crearPedido(pedido);
+        await cargarPedidos();
+        alert("✅ Pedido creado con éxito");
+        form.reset();
+      } catch (e) {
+        alert("❌ Error al crear el pedido");
+      }
+    });
+
+    await cargarPedidos();
+  });
+</script>
 </body>
 </html>

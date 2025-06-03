@@ -1,5 +1,5 @@
 <style>
-  .productos {
+  #productos-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
@@ -50,47 +50,56 @@
 }
 </style>
 
-<section class="productos">
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
-  <div class="producto">
-    <img src="{{ url_for('static', filename='img/glass.png') }}" alt="Gafa">
-    <p class="codigo">MT501</p>
-    <p class="nombre">Montura Hombre Miratto</p>
-    <p class="precio">180.000$</p>
-    <button class="btn">Añadir al carrito</button>
-  </div>
+<section id="productos-container">
 </section>
+<script type="module">
+  import { obtenerProductos, crearDetalleCarrito } from '../static/js/api-client.js';
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const contenedor = document.getElementById("productos-container");
+
+    async function addToCart(producto) {
+    const detalle = {
+      id_carrito: 7,
+      id_producto: producto.id_producto,
+      cantidad: 1,
+      subtotal: parseFloat(producto.precio)
+    };
+
+    try {
+      const respuesta = await crearDetalleCarrito(detalle);
+      alert(`✅ Producto "${producto.nombre}" añadido al carrito`);
+    } catch (e) {
+      alert("❌ Error al añadir al carrito");
+    }
+  }
+
+    try {
+      const productos = await obtenerProductos();
+
+      productos.forEach(producto => {
+        const div = document.createElement("div");
+        div.className = "producto";
+
+        div.innerHTML = `
+          <img src="/static/img/glass.png" alt="Gafa">
+          <p class="codigo">ID${producto.id_producto}</p>
+          <p class="nombre">${producto.nombre}</p>
+          <p class="precio">${Number(producto.precio).toLocaleString('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+          })}</p>
+          <button class="btn">Añadir al carrito</button>
+        `;
+
+        const btn = div.querySelector("button");
+        btn.addEventListener("click", async () => await addToCart(producto));
+
+        contenedor.appendChild(div);
+      });
+    } catch (error) {
+      contenedor.innerHTML = "<p>Error cargando productos.</p>";
+    }
+  });
+</script>

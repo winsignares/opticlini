@@ -140,9 +140,77 @@
           Llena el formulario y un asesor se estará comunicando contigo en el menor tiempo posible para confirmar la cita.
         </p>
       </div>
+      <div id="citas-lista" class="form-info" style="margin-top: 2rem;">
+        <div id="citas-container"></div>
+      </div>
     </div>
   </section>
   <script src="{{url_for('static', filename='js/api-client.js')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const lista = document.createElement("div");
+    const citasLista = document.querySelector("#citas-container");
+    citasLista.appendChild(lista);
+
+    // Utilidad para formatear fecha
+    const obtenerFechaActual = () => new Date().toISOString().split("T")[0];
+
+    // Cargar citas desde localStorage
+    function cargarCitas() {
+      const citas = JSON.parse(localStorage.getItem("citas")) || [];
+      lista.innerHTML = "<h4>Citas agendadas:</h4>";
+      if (citas.length === 0) {
+        lista.innerHTML += "<p>No hay citas registradas.</p>";
+        return;
+      }
+
+      citas.forEach(cita => {
+        const div = document.createElement("div");
+        div.style.border = "1px solid #ccc";
+        div.style.padding = "0.5rem";
+        div.style.marginBottom = "0.5rem";
+        div.style.borderRadius = "6px";
+        div.style.background = "#f1f1f1";
+
+        div.innerHTML = `
+          <p><strong>Fecha:</strong> ${cita.fecha}</p>
+          <p><strong>Hora:</strong> ${cita.hora}</p>
+          <p><strong>Estado:</strong> ${cita.estado}</p>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    // Guardar una nueva cita
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const hora = form.querySelector('input[placeholder="Hora"]').value;
+      if (!hora) {
+        alert("Por favor ingresa la hora");
+        return;
+      }
+
+      const nuevaCita = {
+        id_usuario: 2,
+        id_servicio: 1,
+        estado: "programada",
+        fecha: obtenerFechaActual(),
+        hora
+      };
+
+      const citas = JSON.parse(localStorage.getItem("citas")) || [];
+      citas.push(nuevaCita);
+      localStorage.setItem("citas", JSON.stringify(citas));
+
+      form.reset();
+      cargarCitas();
+    });
+
+    cargarCitas(); // Mostrar citas al cargar
+  });
+</script>
 </body>
 </html>
