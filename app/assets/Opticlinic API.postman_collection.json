@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "346ba7fd-d3ef-496f-a613-9f352435c2e3",
+		"name": "Opticlinic API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38361769"
+	},
+	"item": [
+		{
+			"name": "GET /usuarios/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /usuarios/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Santiago Pérez\",\n  \"email\": \"santiago@example.com\",\n  \"contrase\\u00f1a\": \"123456\",\n  \"telefono\": \"3001234567\"\n}"
+				},
+				"url": "{{url_base}}/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /usuarios/1",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/usuarios/2"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /usuarios/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Juan Actualizado\",\n  \"email\": \"nuevo@example.com\",\n  \"contrase\\u00f1a\": \"654321\",\n  \"telefono\": \"3007654321\"\n}"
+				},
+				"url": "{{url_base}}/usuarios/2"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /usuarios/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/usuarios/1"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /productos/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/productos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /productos/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Gafas UV\",\n  \"descripcion\": \"Gafas protecci\\u00f3n UV 400\",\n  \"stock\": 20,\n  \"precio\": 90000\n}"
+				},
+				"url": "{{url_base}}/productos"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /carritos/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/carritos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /carritos/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id_usuario\": 2,\n  \"total\": 180000\n}"
+				},
+				"url": "{{url_base}}/carritos"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /detalles-carrito/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/detalles-carrito"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /detalles-carrito/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id_carrito\": 7,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 180000\n}"
+				},
+				"url": "{{url_base}}/detalles-carrito"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /contactos/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/contactos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /contactos/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id_usuario\": 2,\n  \"direccion\": \"Calle 123\",\n  \"telefono\": \"3101234567\",\n  \"email\": \"contacto@ejemplo.com\"\n}"
+				},
+				"url": "{{url_base}}/contactos"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /metodos-pago/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/metodos-pago"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /metodos-pago/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tipo\": \"Tarjeta\",\n  \"detalles\": \"Visa débito\"\n}"
+				},
+				"url": "{{url_base}}/metodos-pago"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /pedidos/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /pedidos/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fecha\": \"2025-05-06\",\n  \"id_usuario\": 2,\n  \"id_metodo_pago\": 1,\n  \"total\": 200000,\n  \"estado\": \"pendiente\"\n}"
+				},
+				"url": "{{url_base}}/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /detalles-pedido/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/detalles-pedido"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /detalles-pedido/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id_pedido\": 1,\n  \"id_producto\": 1,\n  \"cantidad\": 2,\n  \"subtotal\": 180000\n}"
+				},
+				"url": "{{url_base}}/detalles-pedido"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /citas/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/citas"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /citas/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"fecha\": \"2025-05-10\",\n  \"hora\": \"14:00\",\n  \"id_usuario\": 2,\n  \"id_servicio\": 1,\n  \"estado\": \"programada\"\n}"
+				},
+				"url": "{{url_base}}/citas"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /servicios/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": "{{url_base}}/servicios"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /servicios/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Examen de la vista\",\n  \"descripcion\": \"Consulta con optómetra\",\n  \"precio\": 50000\n}"
+				},
+				"url": "{{url_base}}/servicios"
+			},
+			"response": []
+		}
+	]
+}
